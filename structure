@@ -1,0 +1,64 @@
+#include <ctype.h> 
+#include <stdio.h> 
+#include <string.h> 
+
+// Define a structure for Hospital 
+struct Hospital { 
+	char name[50]; 
+	char city[50]; 
+	int beds; 
+	float price; 
+	float rating; 
+	int reviews; 
+}; 
+
+// Define a structure for Patient 
+struct Patient { 
+	char name[50]; 
+	int age; 
+}; 
+
+// Function to print hospital data 
+void printHospital(struct Hospital hosp) 
+{ 
+	printf("Hospital Name: %s\n", hosp.name); 
+	printf("City: %s\n", hosp.city); 
+	printf("Total Beds: %d\n", hosp.beds); 
+	printf("Price per Bed: $%.2f\n", hosp.price); 
+	printf("Rating: %.1f\n", hosp.rating); 
+	printf("Reviews: %d\n", hosp.reviews); 
+	printf("\n"); 
+} 
+
+// Function to sort hospitals by beds price (ascending) 
+void sortByPrice(struct Hospital hospitals[], int n) 
+{ 
+	// Implement sorting logic (e.g., bubble sort) 
+	for (int i = 0; i < n - 1; i++) { 
+		for (int j = 0; j < n - i - 1; j++) { 
+			if (hospitals[j].price 
+				> hospitals[j + 1].price) { 
+				struct Hospital temp = hospitals[j]; 
+				hospitals[j] = hospitals[j + 1]; 
+				hospitals[j + 1] = temp; 
+			} 
+		} 
+	} 
+} 
+
+// Function to sort hospitals by name (ascending) 
+void sortByName(struct Hospital hospitals[], int n) 
+{ 
+	// Implement sorting logic (e.g., using strcmp) 
+	for (int i = 0; i < n - 1; i++) { 
+		for (int j = 0; j < n - i - 1; j++) { 
+			if (strcmp(hospitals[j].name, 
+					hospitals[j + 1].name) 
+				> 0) { 
+				struct Hospital temp = hospitals[j]; 
+				hospitals[j] = hospitals[j + 1]; 
+				hospitals[j + 1] = temp; 
+			} 
+		} 
+	} 
+} 
